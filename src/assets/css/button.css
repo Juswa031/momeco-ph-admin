@@ -1,0 +1,48 @@
+.btn-1 {
+    border-color: var(--vt-primary-text);
+    background: transparent;
+    color: var(--vt-primary-text);
+    border: var(--vt-primary-text) solid 2px !important;
+}
+
+.btn-1:hover, .btn-1:active {
+    background: transparent !important;
+    color: var(--vt-primary-text) !important;
+    border: var(--vt-primary-text) solid 2px !important
+}
+
+.btn-1:hover * {
+    color: var(--vt-primary-text) !important;
+    transition: .4s;
+}
+
+.btn-2 {
+    border-color: var(--vt-primary-text);
+    background: var(--vt-primary-text);
+    color: #fff;
+    border: var(--vt-primary-text) solid 2px !important;
+}
+
+.btn-2:disabled {
+    border-color: var(--vt-primary-text);
+    background: var(--vt-primary-text);
+    color: #fff;
+    border: var(--vt-primary-text) solid 2px !important;
+}
+
+.btn-2:hover, .btn-2:active {
+    background: var(--vt-primary-text);
+    color: #fff;
+    border: var(--vt-primary-text) solid 2px !important
+}
+
+.btn-2:hover * {
+    color: var(--vt-primary-text) !important;
+    transition: .4s;
+}
+
+input[type="number"]::-webkit-inner-spin-button,    
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+} 
+

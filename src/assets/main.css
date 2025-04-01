@@ -1,0 +1,12 @@
+/** Bootstrap **/
+@import '/node_modules/bootstrap/dist/css/bootstrap.css';
+@import '/node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+/** Base Css **/
+@import './base.css';
+
+/** Custom Css **/
+@import './css/custom.css';
+
+/** Vuesax Css **/
+@import './fonts/vuesax/vuesax.css';

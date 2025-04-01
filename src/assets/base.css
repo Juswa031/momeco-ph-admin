@@ -1,0 +1,60 @@
+:root {
+  /** primary **/
+  --vt-primary: #f9f9f9;
+  --vt-secondary: #fff;
+
+  /** Primary text **/
+  --vt-primary-text: #008c00;
+
+  /** Primary text Hover **/
+  --vt-primary-text-hover: #007200;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(../assets/fonts/gotham/Gotham-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham-Light";
+  src: url(../assets/fonts/gotham/Gotham-Light.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto-Black";
+  src: url(../assets/fonts/roboto/Roboto-Black.ttf) format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url(../assets/fonts/roboto/Roboto-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url(../assets/fonts/roboto/Roboto-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url(../assets/fonts/roboto/Roboto-Medium.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url(../assets/fonts/poppins/Poppins-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}

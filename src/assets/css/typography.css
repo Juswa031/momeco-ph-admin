@@ -1,0 +1,84 @@
+.g-heading-1 {
+    font-family: "Gotham";
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.g-heading-2 {
+    font-family: "Gotham";
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.g-heading-3 {
+    font-family: "Gotham";
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.g-heading-4 {
+    font-family: "Gotham";
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.g-paragraph {
+    font-family: "Gotham-Light";
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.g-paragraph-small {
+    font-family: "Gotham-Light";
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+/** Roboto **/
+.r-heading-1 {
+    font-family: "Roboto-Black";
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.r-heading-2 {
+    font-family: "Roboto-Bold";
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.r-heading-3 {
+    font-family: "Roboto-Bold";
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.r-heading-4 {
+    font-family: "Roboto-Medium";
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.r-heading-5 {
+    font-family: "Roboto-Bold";
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.r-heading-6 {
+    font-family: "Roboto-Bold";
+    font-size: 0.750rem;
+    font-weight: 700;
+}
+
+.r-paragraph {
+    font-family: "Roboto-Regular";
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.r-paragraph-small {
+    font-family: "Roboto-Regular";
+    font-size: 0.875rem;
+    font-weight: 400;
+}

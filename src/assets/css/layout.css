@@ -1,0 +1,125 @@
+body {
+    background: var(--vt-primary) !important;
+}
+
+.page-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.875rem 1.8rem 1px;
+    overflow-x: visible;
+}
+
+.announcement img {
+    height: 400px;
+}
+
+.announcement .carousel-control-next,
+.announcement .carousel-control-prev {
+    width: 3rem;
+}
+
+@media all and (max-width: 750px) {
+    .announcement .img {
+        height: 250px;
+    }
+}
+
+.card {
+    border: 1px solid var(--vt-secondary);
+    border-radius: 0.6rem;
+}
+
+.product-card {
+    border: 1px solid var(--vt-secondary-text);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* transition: transform 0.2s; */
+    max-width: 16rem;
+    max-height: 18rem;
+    height: 18rem;
+    width: 16rem;
+}
+
+.product-card:hover {
+    border: 1px solid var(--vt-primary-text-hover);
+}
+
+.product-image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.product-title {
+    font-size: .85rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.product-price {
+    color: var(--vt-primary-text);
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+.primary-text,
+.primary-hover:hover {
+    color: var(--vt-primary-text) !important;
+}
+
+footer {
+    margin-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.text-gray {
+    color: #959595;
+}
+
+.cart-payment-card {
+    max-height: 340px !important;
+}
+
+.nav-tabs .nav-link.active {
+    background: none;
+    color: var(--vt-primary-text)
+}
+
+.slz-load {
+    min-height: 50px;
+    /* background-color: rgb(255, 0, 0); */
+    padding: 1rem !important;
+}
+
+.slz-header {
+    min-width: 60px;
+    min-height: 16px;
+    animation: pulse-bg 2s infinite;
+}
+
+@keyframes pulse-bg {
+    0% {
+        background-color: #e6e6e6;
+    }
+    50% {
+        background-color: #f5f3f3;
+    }
+    100% {
+        background-color: #eceaea;
+    }
+}
+
+.form-control:focus {
+    border-color: var(--vt-primary-text) !important;
+    box-shadow: none !important;
+}
+
+.form-floating label {
+    color: gray !important
+}
