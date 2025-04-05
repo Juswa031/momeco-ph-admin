@@ -41,8 +41,12 @@ export default {
         },
         viewUploaded() {
             if (this.uploadedFile) {
-                // const fileURL = URL.createObjectURL(this.uploadedFile);
-                window.open(this.uploadedFile, '_blank');
+                if(!this.imageUrl) {
+                    const fileURL = URL.createObjectURL(this.uploadedFile);
+                    window.open(fileURL, '_blank');
+                } else {
+                    window.open(this.uploadedFile, '_blank');
+                }
             }
         },
         removeUploadedFile() {

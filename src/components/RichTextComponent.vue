@@ -133,7 +133,7 @@
 <template>
     <div v-if="editor">
         <div class="rounded-3 mt-2 richtext" :class="richtextClass">
-            <div class="col-md-12 h-100 d-flex overflow-auto pe-3 pe-md-0 hover-scrollbar-content richtext-tab pb-3" @scroll="handleScroll($event)" v-if="isEdit">
+            <div class="col-md-12 h-100 d-flex overflow-auto pe-3 pe-md-0 hover-scrollbar-content richtext-tab pb-3" v-if="isEdit">
                 <div class="ms-2 cursor-pointer pt-3 my-auto">
                     <i class="isax isax-text-italic fs-4 editor-btn" @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic')}"></i>
                 </div>
@@ -165,7 +165,7 @@
                     <i class="bi bi-list-ol fs-4 editor-btn" :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }"></i>
                 </div>
             </div>
-            <editor-content class="w-100 d-inline-block input-text-1 px-3 px-1 hover-scrollbar-content mb-3 mt-3" :class="editorContentClass" :editor="editor" readonly @scroll="handleScroll($event)"/>
+            <editor-content class="w-100 d-inline-block input-text-1 px-3 px-1 hover-scrollbar-content mb-3 mt-3 pb-3" :class="editorContentClass" :editor="editor" readonly/>
         </div>
     </div>
 </template>
