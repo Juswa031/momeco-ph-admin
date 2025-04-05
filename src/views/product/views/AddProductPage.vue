@@ -95,6 +95,6 @@ export default {
 
     <div class="d-flex align-items-center gap-3 w-100 justify-content-end">
         <button type="submit" class="btn btn-2">Save</button>
-        <div class="primary-text cursor-pointer">Cancel</div>
+        <div class="primary-text cursor-pointer" @click="$router.push({name: 'product-list'})">Cancel</div>
     </div>
 </template>

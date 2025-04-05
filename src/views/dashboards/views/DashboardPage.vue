@@ -202,7 +202,7 @@ export default {
 <template>
     <h1 class="g-heading-1 mb-4">Dashboard</h1>
     <div class="d-flex flex-wrap justify-content-between gap-3">
-        <div class="col" v-for="calculation in calculations" :key="calculation">
+        <div class="col-12 col-md" v-for="calculation in calculations" :key="calculation">
              <CalculationChartComponent :calculation="calculation"/>
         </div>
     </div>

@@ -14,6 +14,9 @@ export default {
                     label: 'Status'
                 },
                 {
+                  label: 'Active?'
+                },
+                {
                     label: 'Actions'
                 },
             ]
@@ -28,7 +31,7 @@ export default {
         <span class="input-group-text">
           <i class="bi bi-search"></i>
         </span>
-          <input type="text" class="form-control p-2 px-3" id="floatingInputGroup1" placeholder="Username">
+          <input type="text" class="form-control p-2 px-3" id="floatingInputGroup1" placeholder="Search">
       </div>
     </div>
     <div class="col-12 col-md order-md-2 order-md-1">
@@ -67,6 +70,11 @@ export default {
             <span class="badge rounded-pill text-bg-success">In Stock</span>
             <span class="badge rounded-pill text-bg-warning text-light">Running Low</span>
             <span class="badge rounded-pill text-bg-danger">Out of Stock</span>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+              <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+            </div>
           </td>
           <td>
             <div class="d-flex gap-3">
