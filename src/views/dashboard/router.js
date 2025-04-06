@@ -1,5 +1,5 @@
 const PageBody = () => import("@/components/PageBody.vue");
-const DashboardPage = () => import("../dashboards/views/DashboardPage.vue");
+const DashboardPage = () => import("./views/DashboardPage.vue");
 
 const moduleRoute = {
     path: "/",

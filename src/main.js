@@ -7,13 +7,15 @@ import router from './router';
 import axios from 'axios';
 import store from './store'
 import products from './views/product';
-import dashboards from './views/dashboards';
+import dashboards from './views/dashboard';
+import orders from './views/order';
 import { registerModules } from "./register-modules"
 
 
 registerModules({
     product: products,
-    dashboard: dashboards
+    dashboard: dashboards,
+    order: orders
  })
 const app = createApp(App)
 

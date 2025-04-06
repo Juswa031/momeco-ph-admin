@@ -29,22 +29,26 @@ export default {
                     <i class="bi" :class="[{ 'bi-arrow-left-circle': isSidebarOpen, 'bi-arrow-right-circle': !isSidebarOpen }]"></i>
                 </div>
             </div> -->
-            <div class="sidebar-item" @click="$router.push({name: 'dashboard'})">
+            <div class="sidebar-item" @click="$router.push({name: 'home'})">
                 <i class="bi bi-house-door" title="Dashboard"></i>
                 <label class="mb-0 d-none">Dashboard</label>
             </div>
             <hr>
-            <div class="sidebar-item mb-2">
+            <div class="sidebar-item mb-2" @click="$router.push({name: 'order-list'})">
                 <i class="bi bi-cart" title="Orders"></i>
                 <label class="mb-0 d-none">Orders</label>
             </div>
             <div class="sidebar-item mb-2">
                 <i class="bi bi-truck" title="Tracker"></i>
-                <label class="mb-0 d-none">Tracker</label>
+                <label class="mb-0 d-none">Trackers</label>
             </div>
             <div class="sidebar-item mb-2" @click="$router.push({name: 'product-list'})">
                 <i class="bi bi-archive" title="Inventory"></i>
                 <label class="mb-0 d-none">Inventory</label>
+            </div>
+            <div class="sidebar-item mb-2">
+                <i class="bi bi-calendar" title="Reports"></i>
+                <label class="mb-0 d-none">Reports</label>
             </div>
             <div class="sidebar-item mb-2">
                 <i class="bi bi-book" title="Content"></i>
