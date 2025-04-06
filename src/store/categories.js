@@ -15,9 +15,13 @@ const getters = {
 };
 
 const actions = {
-    async GET_CATEGORIES({ commit }) {
+    async GET_CATEGORIES({ commit, rootGetters }) {        
         try {
-            const response = await axios.get(`${endpoint}/categories`);
+            const response = await axios.get(`${endpoint}/categories`, {
+                headers: {
+                    Authorization: 'Bearer ' + rootGetters.getToken,
+                }
+            });
             await commit('UPDATE_CATEGORIES', response.data);
         } catch (error) {
             this.errors = error.response.data.errors;
@@ -28,9 +32,13 @@ const actions = {
             toast.error(errorlist)
         }
     },
-    async GET_PAGINATED_CATEGORIES({ commit }) {
+    async GET_PAGINATED_CATEGORIES({ commit, rootGetters }) {
         try {
-            const response = await axios.get(`${endpoint}/categories/paginate`);
+            const response = await axios.get(`${endpoint}/categories/paginate`, {
+                headers: {
+                    Authorization: 'Bearer ' + rootGetters.getToken,
+                }
+            });
             await commit('UPDATE_PAGINATED_CATEGORIES', response.data);
         } catch (error) {
             this.errors = error.response.data.errors;
@@ -41,9 +49,13 @@ const actions = {
             toast.error(errorlist)
         }
     },
-    async ADD_CATEGORIES({ commit }, payload) {
+    async ADD_CATEGORIES({ commit, rootGetters }, payload) {
         try {
-            await axios.post(`${endpoint}/categories`, payload);
+            await axios.post(`${endpoint}/categories`, payload, {
+                headers: {
+                    Authorization: 'Bearer ' + rootGetters.getToken,
+                }
+            });
             toast.success("Category added successfully")
             return true
         } catch (error) {
@@ -56,9 +68,13 @@ const actions = {
             return false
         }
     },
-    async UPDATE_CATEGORIES({ commit }, payload) {
+    async UPDATE_CATEGORIES({ commit, rootGetters }, payload) {
         try {
-            await axios.put(`${endpoint}/categories/${payload.id}`, payload);
+            await axios.put(`${endpoint}/categories/${payload.id}`, payload, {
+                headers: {
+                    Authorization: 'Bearer ' + rootGetters.getToken,
+                }
+            });
             toast.success("Category added successfully")
             return true
         } catch (error) {
@@ -71,9 +87,13 @@ const actions = {
             return false
         }
     },
-    async DELETE_CATEGORY({ commit }, category_id) {
+    async DELETE_CATEGORY({ commit, rootGetters }, category_id) {
         try {
-            await axios.delete(`${endpoint}/categories/${category_id}`);
+            await axios.delete(`${endpoint}/categories/${category_id}`, {
+                headers: {
+                    Authorization: 'Bearer ' + rootGetters.getToken,
+                }
+            });
             toast.success("Category deleted successfully")
             return true
         } catch (error) {
@@ -85,9 +105,13 @@ const actions = {
             toast.error(errorlist)
         }
     },
-    async SHOW_CATEGORY({ commit }, category_id) {
+    async SHOW_CATEGORY({ commit, rootGetters }, category_id) {
         try {
-            const response = await axios.get(`${endpoint}/categories/${category_id}`);
+            const response = await axios.get(`${endpoint}/categories/${category_id}`, {
+                headers: {
+                    Authorization: 'Bearer ' + rootGetters.getToken,
+                }
+            });
             return response.data
         } catch (error) {
             this.errors = error.response.data.errors;
