@@ -40,7 +40,8 @@ export default {
     },
     computed: {
         ...mapGetters({
-          getPaginatedCategories: 'getPaginatedCategories'
+          getPaginatedCategories: 'getPaginatedCategories',
+          token: 'getToken'
         }),  
     },
     mounted() {
@@ -50,6 +51,9 @@ export default {
       async fetchCategories(url) {
         axios.get(url ? url : `v1/categories/paginate`, {
             params: this.filter,
+            headers: {
+                Authorization: 'Bearer ' + this.token,
+            }
         }).then((response) => {
             this.categories = response.data.data;
             this.meta = response.data.meta;

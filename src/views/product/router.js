@@ -10,12 +10,14 @@ const moduleRoute = {
         {
             path: '',
             name: 'product-list',
-            component: ProductListPage
+            component: ProductListPage,
+            meta: { requireAuth: true },
         },
         {
             path: 'details/:id?',
             name: 'product-details',
-            component: ProductDetailsPage
+            component: ProductDetailsPage,
+            meta: { requireAuth: true },
         },
     ]
 }

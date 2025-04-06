@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import TablePaginationComponent from '@/components/TablePaginationComponent.vue';
+import { mapGetters } from 'vuex';
 
 export default {
     components: {
@@ -39,6 +40,11 @@ export default {
             product_id: null,
         }
     },
+    computed: {
+      ...mapGetters({
+          token: 'getToken'
+      })
+    },
     mounted() {
         this.fetchProducts();
     },
@@ -46,6 +52,9 @@ export default {
       async fetchProducts(url = null) {
           axios.get(url ? url : `/v1/products`, {
               params: this.filter,
+              headers: {
+                  Authorization: 'Bearer ' + this.token,
+              }
           }).then((response) => {
               this.products = response.data.data;
               this.meta = response.data.meta;
@@ -173,7 +182,7 @@ export default {
               <img src="../../../assets/images/confirmation.png" alt="confirmation" width="200"/>
             </div>
             <div class="col-12 text-center">
-              <p>Are you sure you want to delete this category?</p>
+              <p>Are you sure you want to delete this product?</p>
             </div>
           </div>
         </div>
