@@ -187,8 +187,7 @@ export default {
                         </td>   
                         <td>
                             <div class="form-check form-switch">
-                                <!-- :checked="voucher.is_active" :true-value="1" :false-value="0"  -->
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" disabled>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" disabled :checked="voucher.is_active" :true-value="1" :false-value="0" >
                             </div>
                         </td>
                         <td>
