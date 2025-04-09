@@ -2,10 +2,12 @@
 import axios from 'axios';
 import TablePaginationComponent from '@/components/TablePaginationComponent.vue';
 import { mapGetters } from 'vuex';
+import ConfirmationModal from '@/components/ConfirmationModal.vue';
 
 export default {
     components: {
-        TablePaginationComponent
+        TablePaginationComponent,
+        ConfirmationModal
     },
     data() {
         return {
@@ -86,7 +88,12 @@ export default {
                 this.$refs.closeConfirmationModal.click();
             }
         });
-      }
+      },
+      removeData(is_deleted) {
+          if(is_deleted) {
+              this.deleteProduct();
+          }
+      },
     }
 } 
 </script>
@@ -152,7 +159,7 @@ export default {
                   <i class="isax isax-edit"></i>
                   <span>Edit</span>
                 </div>
-                <div class="d-flex gap-1 primary-hover cursor-pointer text-gray" @click="product_id = product.id" data-bs-toggle="modal" data-bs-target="#confirmationProduct">
+                <div class="d-flex gap-1 primary-hover cursor-pointer text-gray" @click="removeData(), product_id = product.id" data-bs-toggle="modal" data-bs-target="#confirmationProduct">
                   <i class="isax isax-trash"></i>
                   <span>Remove</span>
                 </div>
@@ -168,29 +175,5 @@ export default {
   </div>
   <TablePaginationComponent :meta="meta" @refreshTable="refreshTable"></TablePaginationComponent>
 
-  <!-- Confirmation Modal -->
-  <div class="modal fade" id="confirmationProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmationProductLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="confirmationProductLabel">Confirmation</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
-            <div class="col-12 text-center">
-              <img src="../../../assets/images/confirmation.png" alt="confirmation" width="200"/>
-            </div>
-            <div class="col-12 text-center">
-              <p>Are you sure you want to delete this product?</p>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-2" @click="deleteProduct()">Yes</button>
-          <button type="button" class="btn btn-1" data-bs-dismiss="modal" ref="closeConfirmationModal">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ConfirmationModal :target="'confirmationProduct'" @isDeleted="removeData"/>
 </template>

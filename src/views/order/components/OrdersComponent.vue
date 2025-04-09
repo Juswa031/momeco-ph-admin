@@ -4,15 +4,14 @@ import TablePaginationComponent from '@/components/TablePaginationComponent.vue'
 import { mapGetters } from 'vuex';
 import { toCurrency } from '@/helpers/text_format';
 import { jsPDF } from "jspdf";
-// import VueImageZoomer from 'vue-image-zoomer'
-import 'vue-image-zoomer/dist/style.css';
+import ModalComponent from '@/components/ModalComponent.vue';
 
 export default {
     name: 'OrdersComponent',
     setup() {return { toCurrency }},
     components: {
         TablePaginationComponent,
-        // VueImageZoomer
+        ModalComponent
     },
     data() {
         return {
@@ -151,19 +150,19 @@ export default {
           // Save the PDF
           // doc.save("receipt.pdf");
           doc.output("dataurlnewwindow");
-        },
-        async updatePaymentStatus(status) {
-          let payload = {
-              status: status,
-              id: this.order_id
-          }
-          await this.$store.dispatch('UPDATE_PAYMENT_STATUS', payload).then((response) => {
-            if(response) {
-              this.fetchOrders();
-              this.$refs.closePymentDetails.click();
-            }
-          })
+      },
+      async updatePaymentStatus(status) {
+        let payload = {
+            status: status,
+            id: this.order_id
         }
+        await this.$store.dispatch('UPDATE_PAYMENT_STATUS', payload).then((response) => {
+          if(response) {
+            this.fetchOrders();
+            this.$refs.closePymentDetails.click();
+          }
+        })
+      },
     }
 } 
 </script>
@@ -224,47 +223,40 @@ export default {
   </div>
   <TablePaginationComponent :meta="meta" @refreshTable="refreshTable"></TablePaginationComponent>
 
-  <div class="modal fade" id="paymentDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
+  <ModalComponent :target="'paymentDetails'">
+      <template #header>
           <h1 class="modal-title fs-5" id="confirmationProductLabel">Payment Confirmation</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="order_id = null" ref="closePymentDetails"></button>
-        </div>
-        <div class="modal-body">
+      </template>
+      <template #body>
           <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
             <div class="col-12 text-center">
               <img src="https://placehold.co/600x1000" alt="payment" class="w-100 h-100"/>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
+      </template>
+      <template #footer>
           <button type="button" class="btn btn-2" @click="updatePaymentStatus('approved')">Approved</button>
           <button type="button" class="btn btn-1" data-bs-dismiss="modal" @click="updatePaymentStatus('denied')">Declined</button>
-        </div>
-      </div>
-    </div>
-  </div>
+      </template>
+  </ModalComponent>
 
-  <!-- Confirmation Modal -->
-  <div class="modal fade" id="viewOrderDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmationProductLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-      <div class="modal-content">
-        <div class="modal-header">
+  <ModalComponent :target="'viewOrderDetails'">
+      <template #header>
           <h2 class="modal-title g-heading-2" id="confirmationProductLabel">Order Details</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="order_details = null"></button>
-        </div>
-        <div class="modal-body">
+      </template>
+      <template #body>
           <div class="d-flex justify-content-between flex-wrap">
-            <div class="col-12 col-md-6">
-                <p class="r-paragraph mb-0 mb-2"><span class="fw-bold g-heading-3 mb-0">Customer Name:</span> {{ order_details?.user_details?.name }}</p>
-            </div>
-            <div class="col-12 col-md-6">
-                <p class="r-paragraph mb-0 mb-2"><span class="fw-bold g-heading-3 mb-0">Address:</span> {{ order_details?.user_details?.address }}</p>
-            </div>
-            <div class="col-12 col-md-6">
-                <p class="r-paragraph"><span class="fw-bold g-heading-3">Contact No.:</span> {{ order_details?.user_details?.mobile_no }}</p>
-            </div>
+              <div class="col-12 col-md-6">
+                  <p class="r-paragraph mb-0 mb-2"><span class="fw-bold g-heading-3 mb-0">Customer Name:</span> {{ order_details?.user_details?.name }}</p>
+              </div>
+              <div class="col-12 col-md-6">
+                  <p class="r-paragraph mb-0 mb-2"><span class="fw-bold g-heading-3 mb-0">Address:</span> {{ order_details?.user_details?.address }}</p>
+              </div>
+              <div class="col-12 col-md-6">
+                  <p class="r-paragraph"><span class="fw-bold g-heading-3">Contact No.:</span> {{ order_details?.user_details?.mobile_no }}</p>
+              </div>
           </div>
           <div class="table-responsive table-auto">
               <table class="table align-middle mb-0 bg-white">
@@ -297,13 +289,12 @@ export default {
                     </tr>
                   </tbody>
               </table>
-            </div>
-        </div>
-        <div class="modal-footer">
+          </div>
+      </template>
+      <template #footer>
           <button type="button" class="btn btn-2">Update Status</button>
           <button type="button" class="btn btn-1" data-bs-dismiss="modal" ref="closeConfirmationModal" @click="order_details = null">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
+      </template>
+  </ModalComponent>
+
 </template> 

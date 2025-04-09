@@ -3,11 +3,15 @@ import { mapGetters } from 'vuex';
 import axios from 'axios';
 import TablePaginationComponent from '@/components/TablePaginationComponent.vue';
 import UploadFileComponent from '@/components/UploadFileComponent.vue';
+import ConfirmationModal from '@/components/ConfirmationModal.vue';
+import ModalComponent from '@/components/ModalComponent.vue';
 
 export default {
     components: {
         TablePaginationComponent,
-        UploadFileComponent
+        UploadFileComponent,
+        ConfirmationModal,
+        ModalComponent
     },
     data() {
         return {
@@ -124,6 +128,11 @@ export default {
           is_active: 0,
           image_url: null
         }
+      },
+      removeData(is_deleted) {
+          if(is_deleted) {
+              this.deleteCategory();
+          }
       }
     },
 }
@@ -179,7 +188,7 @@ export default {
                   <i class="isax isax-edit"></i>
                   <span>Edit</span>
                 </div>
-                <div class="d-flex gap-1 primary-hover cursor-pointer text-gray" data-bs-toggle="modal" data-bs-target="#confirmationCategory" @click="category_id = category.id">
+                <div class="d-flex gap-1 primary-hover cursor-pointer text-gray" data-bs-toggle="modal" data-bs-target="#confirmationCategory" @click="removeData(), category_id = category.id">
                   <i class="isax isax-trash"></i>
                   <span>Remove</span>
                 </div>
@@ -195,67 +204,35 @@ export default {
   </div>
   <TablePaginationComponent :meta="meta" @refreshTable="refreshTable"></TablePaginationComponent>
 
-  <!-- Store/Update Category -->
-  <div class="modal fade" id="newCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="newCategoryLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="newCategoryLabel">Add Category</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="forceRender()"></button>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
-            <div class="col-12">
-              <UploadFileComponent @imageUploaded="getUploadedfile" :imageUrl="payload.image_url" v-if="renderComponent"/>
-                <!-- <input class="form-control form-control-lg" id="categoryImage" type="file" accept="image/*"/> -->
+  <ModalComponent :target="'newCategory'">
+    <template #header>
+      <h1 class="modal-title fs-5" id="newCategoryLabel">Add Category</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="forceRender()"></button>
+    </template>
+    <template #body>
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+          <div class="col-12">
+            <UploadFileComponent @imageUploaded="getUploadedfile" :imageUrl="payload.image_url" v-if="renderComponent"/>
+          </div>
+          <div class="col">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="categoryName" placeholder="Name" v-model="payload.category">
+              <label for="categoryName">Name</label>
             </div>
-            <div class="col">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="categoryName" placeholder="Name" v-model="payload.category">
-                <label for="categoryName">Name</label>
-              </div>
-            </div>
-            <div class="col-12 col-md-auto">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="payload.is_active" :true-value="1" :false-value="0">
-                <label class="form-check-label" for="flexSwitchCheckChecked">Is Active?</label>
-              </div>
+          </div>
+          <div class="col-12 col-md-auto">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="payload.is_active" :true-value="1" :false-value="0">
+              <label class="form-check-label" for="flexSwitchCheckChecked">Is Active?</label>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-2" @click="addCategories()">Save</button>
-          <button type="button" class="btn btn-1" data-bs-dismiss="modal" ref="closeModal">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
+    </template>
+    <template #footer>
+        <button type="button" class="btn btn-2" @click="addCategories()">Save</button>
+        <button type="button" class="btn btn-1" data-bs-dismiss="modal" ref="closeModal">Cancel</button>
+    </template>
+  </ModalComponent>
 
-
-  <!-- Confirmation -->
-  <div class="modal fade" id="confirmationCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmationCategoryLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="confirmationCategoryLabel">Confirmation</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
-            <div class="col-12 text-center">
-              <img src="../../../assets/images/confirmation.png" alt="confirmation" width="200"/>
-            </div>
-            <div class="col-12 text-center">
-              <p>Are you sure you want to delete this category?</p>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-2" @click="deleteCategory()">Yes</button>
-          <button type="button" class="btn btn-1" data-bs-dismiss="modal" ref="closeConfirmationModal">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 

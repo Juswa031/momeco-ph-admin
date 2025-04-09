@@ -5,6 +5,7 @@ import categories from '../store/categories';
 import products from '../store/products';
 import uploads from '../store/uploads';
 import orders from "./orders";
+import vouchers from "./vouchers";
 
 export default new Vuex.Store({
     modules: {
@@ -12,7 +13,8 @@ export default new Vuex.Store({
         categories,
         products,
         uploads,
-        orders
+        orders,
+        vouchers
     },
     plugins: [createPersistedState()]
 });

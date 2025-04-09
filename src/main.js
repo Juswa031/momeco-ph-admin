@@ -9,13 +9,15 @@ import store from './store'
 import products from './views/product';
 import dashboards from './views/dashboard';
 import orders from './views/order';
+import vouchers from './views/voucher'
 import { registerModules } from "./register-modules"
 
 
 registerModules({
     product: products,
     dashboard: dashboards,
-    order: orders
+    order: orders,
+    voucher: vouchers
  })
 const app = createApp(App)
 
