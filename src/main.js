@@ -10,6 +10,7 @@ import products from './views/product';
 import dashboards from './views/dashboard';
 import orders from './views/order';
 import vouchers from './views/voucher'
+import access_controls from './views/access-control'
 import { registerModules } from "./register-modules"
 
 
@@ -17,7 +18,8 @@ registerModules({
     product: products,
     dashboard: dashboards,
     order: orders,
-    voucher: vouchers
+    voucher: vouchers,
+    access_control: access_controls
  })
 const app = createApp(App)
 

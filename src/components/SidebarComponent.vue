@@ -58,7 +58,7 @@ export default {
                 <i class="bi bi-book" title="Content"></i>
                 <label class="mb-0 d-none">Content</label>
             </div>
-            <div class="sidebar-item">
+            <div class="sidebar-item" @click="$router.push({name: 'access-control-list'})">
                 <i class="bi bi-person" title="Access Control"></i>
                 <label class="mb-0 d-none">Access Control</label>
             </div>
