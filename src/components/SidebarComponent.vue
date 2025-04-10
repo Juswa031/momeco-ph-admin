@@ -54,7 +54,7 @@ export default {
                 <i class="bi bi-bookmark" title="Reports"></i>
                 <label class="mb-0 d-none">Vouchers</label>
             </div>
-            <div class="sidebar-item mb-2">
+            <div class="sidebar-item mb-2" @click="$router.push({name: 'content-list'})">
                 <i class="bi bi-book" title="Content"></i>
                 <label class="mb-0 d-none">Content</label>
             </div>

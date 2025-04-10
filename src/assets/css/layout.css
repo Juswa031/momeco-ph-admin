@@ -168,10 +168,13 @@ footer {
     top: 0;
     z-index: 1;
     background:#FFFFFF;
+    font-family: "Roboto-Regular";
+    font-size: 0.875rem;
+    font-weight: 400;
 }
 
 .table-header th {
-    color: #000;
+    color: #979797;
 }
 
 .btn-close-icon {

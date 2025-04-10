@@ -5,13 +5,14 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import axios from 'axios';
-import store from './store'
+import store from './store';
 import products from './views/product';
 import dashboards from './views/dashboard';
 import orders from './views/order';
-import vouchers from './views/voucher'
-import access_controls from './views/access-control'
-import { registerModules } from "./register-modules"
+import vouchers from './views/voucher';
+import access_controls from './views/access-control';
+import contents from './views/content';
+import { registerModules } from "./register-modules";
 
 
 registerModules({
@@ -19,7 +20,8 @@ registerModules({
     dashboard: dashboards,
     order: orders,
     voucher: vouchers,
-    access_control: access_controls
+    access_control: access_controls,
+    content: contents
  })
 const app = createApp(App)
 
