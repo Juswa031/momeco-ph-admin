@@ -27,8 +27,8 @@ jobs:
       - name: 🏗️ Build Vue app
         run: npm run build
 
-      # Debugging step (optional, check vars)
-      - name: Check FTP vars
+      # Debugging step (optional, check variables)
+      - name: Check FTP variables
         run: |
           echo "FTP_HOST=${{ vars.FTP_HOST }}"
           echo "FTP_USERNAME=${{ vars.FTP_USERNAME }}"
@@ -39,5 +39,5 @@ jobs:
           server: ${{ vars.FTP_HOST }}
           username: ${{ vars.FTP_USERNAME }}
           password: ${{ vars.FTP_PASSWORD }}
-          local-dir: dist
+          local-dir: dist/  # Add trailing slash to indicate it's a folder
           server-dir: ${{ vars.FTP_TARGET_DIR }}
