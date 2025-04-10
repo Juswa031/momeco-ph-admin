@@ -36,9 +36,13 @@ const actions = {
         }
     },
 
-    async register({ commit }, payload) {
+    async register({ commit, rootGetters }, payload) {
         try {
-            await axios.post(`${endpoint}/register`, payload);
+            await axios.post(`${endpoint}/register`, payload, {
+                headers: {
+                    Authorization: 'Bearer ' + rootGetters.getToken,
+                }
+            });
             toast.success('Register Successfully!')
             return true;
         } catch (error) {
@@ -58,8 +62,25 @@ const actions = {
                     Authorization: 'Bearer ' + rootGetters.getToken,
                 }
             });
-            // await commit('updateAuthProfile', response.data);
             toast.success('Profile Updated Successfully!')
+        } catch (error) {
+            this.errors = error.response.data.errors;
+            var errorlist = "";
+            this.errors.forEach(element => {
+                errorlist += element.detail + "\n";
+            });
+            toast.error(errorlist)
+        }
+    },
+
+    async showProfile({ commit, rootGetters }, payload) {
+        try {
+            let response = await axios.get(`${endpoint}/access-control?id=${payload.id}`, {
+                headers: {
+                    Authorization: 'Bearer ' + rootGetters.getToken,
+                }
+            });
+            return response.data
         } catch (error) {
             this.errors = error.response.data.errors;
             var errorlist = "";

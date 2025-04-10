@@ -80,7 +80,7 @@ export default {
                 this.filter.per_page = per_page;
                 this.fetchVouchers(url);
         },
-        searchProducts() {
+        searchvouchers() {
             if(this.filter.data.length > 0) {
             this.fetchVouchers();
             } else {

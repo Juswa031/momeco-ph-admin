@@ -1,0 +1,37 @@
+name: Deploy Vue App to Hostinger
+
+on:
+  push:
+    branches:
+      - develop  # Change this if your deploy branch is different
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run tests
+        run: npm run test
+
+      - name: 🏗️ Build Vue app
+        run: npm run build
+
+      - name: 📤 Deploy via FTP to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}
