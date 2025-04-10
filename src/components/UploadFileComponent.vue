@@ -69,7 +69,6 @@ export default {
                     onUploadProgress: function (progressEvent) {
                         if (progressEvent.lengthComputable) {
                             this.progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                            console.log(this.progress);
                         }
                     }
                 }).then((response) => {
