@@ -33,11 +33,11 @@ jobs:
           echo "FTP_HOST=${{ vars.FTP_HOST }}"
           echo "FTP_USERNAME=${{ vars.FTP_USERNAME }}"
 
-      - name: 📤 Deploy via FTP to Hostinger
+      - name: 📤 Deploy files and folders under dist/ via FTP to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ vars.FTP_HOST }}
           username: ${{ vars.FTP_USERNAME }}
           password: ${{ vars.FTP_PASSWORD }}
-          local-dir: dist/  # Add trailing slash to indicate it's a folder
+          local-dir: dist/  # Upload everything inside dist/
           server-dir: ${{ vars.FTP_TARGET_DIR }}
