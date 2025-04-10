@@ -22,10 +22,16 @@ jobs:
         run: npm ci
 
       # - name: 🧪 Run tests
-        # run: npm run test
+      # run: npm run test
 
       - name: 🏗️ Build Vue app
         run: npm run build
+
+      # Debugging step (optional, check secrets)
+      - name: Check FTP secrets
+        run: |
+          echo "FTP_HOST=${{ secrets.FTP_HOST }}"
+          echo "FTP_USERNAME=${{ secrets.FTP_USERNAME }}"
 
       - name: 📤 Deploy via FTP to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
